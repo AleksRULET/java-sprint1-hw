@@ -26,7 +26,7 @@ public class Main {
             printMenu();
             userInput = scanner.nextInt();
         }
-        System.out.println("Программа завершена");
+        System.out.println("Программа завершена.");
     }
 
     static void printMenu() {
