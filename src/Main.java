@@ -7,17 +7,17 @@ public class Main {
         StepTracker tracker = new StepTracker();
 
         printMenu();
-        int userInput = checkInputInteger();
+        int userInput = checkInputInteger(scanner);
 
         while (userInput != 0) {
             if (userInput == 1) {
-                tracker.addSteps(inputMonth(), inputDay(), inputSteps());
+                tracker.addSteps(inputMonth(scanner), inputDay(scanner), inputSteps(scanner));
 
             } else if (userInput == 2) {
-                tracker.getStatistic(inputMonth());
+                tracker.getStatistic(inputMonth(scanner));
 
             } else if (userInput == 3) {
-                tracker.changeGoal(inputNewGoal());
+                tracker.changeGoal(inputNewGoal(scanner));
 
             }  else {
                 System.out.println("Такой комманды нет");
@@ -37,28 +37,27 @@ public class Main {
         System.out.println("0. Выйти из приложения");
     }
 
-    static int checkInputInteger() {
-        Scanner scanner = new Scanner(System.in);
-        int Integer;
+    static int checkInputInteger(Scanner scanner) {
+        int inputValue;
         while (true) {
             if (scanner.hasNextInt()) {
-                Integer = scanner.nextInt();
+                inputValue = scanner.nextInt();
                 break;
             } else {
                 System.out.println("Некорректный ввод. Введите число");
                 scanner.next();
             }
         }
-        return Integer;
+        return inputValue;
     }
 
-    static int inputMonth() {
+    static int inputMonth(Scanner scanner) {
         System.out.println("Введите номер месяца: ");
-        int month = checkInputInteger();
+        int month = checkInputInteger(scanner);
         while (true) {
             if ((month <= 0) || (month > 12)) {
                 System.out.println("Введите номер месяца от 1 до 12: ");
-                month = checkInputInteger();
+                month = checkInputInteger(scanner);
             } else {
                 break;
             }
@@ -66,13 +65,13 @@ public class Main {
         return month;
     }
 
-    static int inputDay() {
+    static int inputDay(Scanner scanner) {
         System.out.println("Введите день месяца: ");
-        int day = checkInputInteger();
+        int day = checkInputInteger(scanner);
         while (true) {
             if ((day <= 0) || (day > 30)) {
                 System.out.println("Введите день месяца от 1 до 30: ");
-                day = checkInputInteger();
+                day = checkInputInteger(scanner);
             } else {
                 break;
             }
@@ -80,26 +79,26 @@ public class Main {
         return day;
     }
 
-    static int inputSteps() {
+    static int inputSteps(Scanner scanner) {
         System.out.println("Введите количество шагов за день: ");
-        int stepsPerDay = checkInputInteger();
+        int stepsPerDay = checkInputInteger(scanner);
         while (true) {
             if (stepsPerDay <= 0) {
                 System.out.println("Введите положительное чило: ");
-                stepsPerDay = checkInputInteger();
+                stepsPerDay = checkInputInteger(scanner);
             } else {
                 break;
             }
         }
         return stepsPerDay;
     }
-    static int inputNewGoal() {
+    static int inputNewGoal(Scanner scanner) {
         System.out.println("Введите новую цель: ");
-        int newGoal = checkInputInteger();
+        int newGoal = checkInputInteger(scanner);
         while (true) {
             if (newGoal <= 0)  {
                 System.out.println("Введите положительное чило");
-                newGoal = checkInputInteger();
+                newGoal = checkInputInteger(scanner);
             } else {
                 break;
             }
