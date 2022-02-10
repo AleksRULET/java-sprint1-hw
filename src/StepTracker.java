@@ -1,6 +1,7 @@
 import java.util.HashMap;
 
 public class StepTracker {
+    Converter converter = new Converter();
     int stepsToGoal = 10000;
     public HashMap<Integer, int[]> monthToData;
 
@@ -45,13 +46,21 @@ public class StepTracker {
         System.out.println("Общее количество шагов за месяц: " + summ);
         System.out.println("Максимальное количество пройденных шагов: " + maxSteps);
         System.out.println("Среднее количество шагов: " + (summ/(k-1)));
-        System.out.println("Пройденная дистанция составила: "  + Converter.convertToKM(summ) + " км");
-        System.out.println("Количество сожжённых килокалорий: " + Converter.convertToCalories(summ));
+        System.out.println("Пройденная дистанция составила: "  + converter.convertToKM(summ) + " км");
+        System.out.println("Количество сожжённых килокалорий: " + converter.convertToCalories(summ));
         System.out.println("Лучшая серия: " + bestSeries + " дней");
     }
 
     void changeGoal(int change) {
         stepsToGoal = change;
-        System.out.println("Целевое значение шагов измененно.\nНовая цель: " + stepsToGoal + " шагов.");
+        System.out.print("Целевое значение шагов измененно.\nНовая цель: " + stepsToGoal);
+        if (change == 1) {
+            System.out.println(" шаг");
+        } else if (change>1 && change<5) {
+            System.out.println(" шага");
+        } else {
+            System.out.println(" шагов");
+        }
+
     }
 }
